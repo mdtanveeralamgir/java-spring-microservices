@@ -3,19 +3,13 @@ package com.microservices.limitsservice.configuration;
 //The name has to same as in application.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@ConfigurationProperties("limits-service") // Picks values from application.properties with prefix "limits-service"
-@Service
+@Component
+@ConfigurationProperties("limits-service")
 public class Configuration {
-    private int minimum, maximum;
-
-    public Configuration(){}
-
-    public Configuration(int minimum, int maximum) {
-        this.minimum = minimum;
-        this.maximum = maximum;
-    }
+    private int minimum;
+    private int maximum;
 
     public int getMinimum() {
         return minimum;
@@ -33,11 +27,4 @@ public class Configuration {
         this.maximum = maximum;
     }
 
-    @Override
-    public String toString() {
-        return "Configuration{" +
-                "minimum=" + minimum +
-                ", maximum=" + maximum +
-                '}';
-    }
 }
